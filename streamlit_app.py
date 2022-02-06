@@ -1,53 +1,32 @@
 import streamlit as st
 
-
-def to_do(st_commands, checkbox_id):
-    cols = st.columns((1, 20))
-    done = cols[0].checkbox(" ", key=checkbox_id)
-    if done:
-        for (cmd, *args) in st_commands:
-            with cols[1]:
-                if cmd == st.write:
-                    text = args[0]
-                    cols[1].write(
-                        f"<s style='color: #888'> {text} </s>",
-                        unsafe_allow_html=True,
-                    )
-                else:
-                    if cmd in (
-                        st.slider,
-                        st.button,
-                        st.checkbox,
-                        st.time_input,
-                        st.color_picker,
-                        st.selectbox,
-                        st.camera_input,
-                        st.radio,
-                        st.date_input,
-                        st.multiselect,
-                        st.text_area,
-                        st.text_input,
-                    ):
-                        cmd(*args, disabled=True)
-                    else:
-                        cmd(*args)
-
-    else:
-        for (cmd, *args) in st_commands:
-            with cols[1]:
-                if cmd == st.write:
-                    st.write(*args, unsafe_allow_html=True)
-                else:
-
-                    cmd(*args)
-    st.write("")
-    return done
-
+from stodo import to_do
 
 st.title("☑️ Meet `stodo`, your Streamlit to-do")
-"""Introducing `stodo` so you can create to do items in Streamlit! Here's how it looks like:"""
+"""Introducing `stodo` so you can create to do items in Streamlit!"""
+
+"""## My to-do today"""
+to_do(
+    [(st.write, "☕ Take my coffee")],
+    "coffee",
+)
+to_do(
+    [(st.write, "🥞 Have a nice breakfast")],
+    "pancakes",
+)
+to_do(
+    [(st.write, ":train: Go to work!")],
+    "work",
+)
+
+"""## How to use it?
+
+Here's how you can create a Streamlit to-do"""
+
 
 with st.echo():
+    from stodo import to_do
+
     to_do([(st.write, "Here's a first item")], "first_to_do")
 
 """Checking the to-do will strike all the text that can be found! Try it out below:"""
