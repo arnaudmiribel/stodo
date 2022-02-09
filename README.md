@@ -7,6 +7,6 @@ This repository introduces `stodo`, a simple function you can import (from `stod
 
 Demo:  
 
-<img src="https://user-images.githubusercontent.com/7164864/153210535-445628eb-85ff-4637-ac47-af83b49605be.gif" width=200> </img>
+<img src="https://user-images.githubusercontent.com/7164864/153211283-e517fc37-fe88-4704-8093-dff0557b63bb.gif" width=200> </img>
 
 Visit [the app](https://share.streamlit.io/arnaudmiribel/stodo/main) to learn more! 
